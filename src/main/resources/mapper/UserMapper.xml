@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="stu.lt.demo.mapper.UserMapper">
+    <!-- 目的：为dao接口方法提供sql语句配置 -->
+
+    <select id="list" parameterType="map" resultType="stu.lt.demo.entity.User">
+        select * from LT_USER_TEST
+        where 1=1
+        <if test="id != null and id > 0">
+            and ID = #{id}
+        </if>
+        <if test="name != null and name != ''">
+            and name = #{name}
+        </if>
+        <if test="sex != null and sex != ''">
+            and sex = #{sex}
+        </if>
+        <if test="mobileNumber != null and mobileNumber !=''">
+            and MOBILE_NUMBER = #{mobileNumber}
+        </if>
+        <if test="isUsing != null">
+            and IS_USING = #{isUsing}
+        </if>
+    </select>
+
+    <insert id="insert" parameterType="map" >
+        insert into LT_USER_TEST(id, name, sex, mobile_number,IS_USING) values ()
+    </insert>
+
+</mapper>
